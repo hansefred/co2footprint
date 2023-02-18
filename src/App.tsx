@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState} from 'react';
+import { faker } from '@faker-js/faker';
+import Environmental from "./Environmental";
+import EnvironmentalList from "./EnvironmentalList";
+import SearchForm from "./SearchForm";
+
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    let environmentalData: Environmental [] = loadFakeData();
+
+
+    function loadFakeData() {
+        let datas: Environmental [] = []
+
+        for (let i = 0; i < 50; i++) {
+            let data: Environmental = new Environmental();
+            data.companyName = faker.company.name();
+            data.countryName = faker.address.county();
+            data.co2InTons = faker.datatype.number();
+            datas.push(data);
+        }
+
+
+        return datas;
+    }
+
+
+
+    return (
+            <>
+                <EnvironmentalList EnvList={environmentalData} key="list" ></EnvironmentalList>
+            </>
+            )
 }
+
+
 
 export default App;
