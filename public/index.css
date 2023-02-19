@@ -1,0 +1,38 @@
+.app-container {
+    display: flex;
+}
+.menu-toggle{
+    display: none;
+}
+
+.menu-bar-right{
+    margin: 2em 2em 2em 2em;
+}
+
+
+.menu-bar-left{
+    margin: 2em 2em 2em 2em;
+}
+
+
+
+@media  screen and (max-width: 600px) {
+    .menu-bar-left{
+        display: none;
+    }
+    .menu-bar-right{
+        display: none;
+
+    }
+    .menu-toggle{
+        display: block;
+    }
+
+    .menu-bar-right-show{
+        display: block;
+    }
+    .menu-bar-left-show{
+        display: block;
+    }
+
+}

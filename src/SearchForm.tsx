@@ -15,20 +15,32 @@ const SearchForm: React.FC<State> = (props:State) => {
 
 
 
-    //TODO Check Cross Side Script
+    function sanitizeString(input:string) {
+        // Erlaubt nur Buchstaben, Zahlen und Unterstriche
+        let pattern = /[^\w]/g;
+        let regex = new RegExp(pattern, "g");
+
+        return input.replace(regex, "");
+    }
+
+    
     const onChangeCompany = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        setCompanyName(event.target.value);
-        props.onSearchChange({companyName: event.target.value, countryName: countryName, sort: sort} )
+        let value = sanitizeString(event.target.value);
+        setCompanyName(value);
+        props.onSearchChange({companyName: value, countryName: countryName, sort: sort} )
     };
     const onChangeCountry = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        setCountryName(event.target.value);
-        props.onSearchChange({companyName: companyName, countryName: event.target.value, sort: sort},)
+        let value = sanitizeString(event.target.value);
+        setCountryName(value);
+        props.onSearchChange({companyName: companyName, countryName: value, sort: sort},)
     };
 
     const onChangeSort = (event: React.ChangeEvent<HTMLSelectElement>): void => {
-        setSort(event.target.value);
-        props.onSearchChange({companyName: companyName, countryName: countryName, sort: event.target.value})
+        let value = sanitizeString(event.target.value);
+        setSort(value);
+        props.onSearchChange({companyName: companyName, countryName: countryName, sort: value})
     };
+
 
     return (
 

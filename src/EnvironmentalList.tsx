@@ -57,6 +57,7 @@ export const EnvironmentalList = ({EnvList}: Props) => {
     return(
         <>
             <SearchForm onSearchChange={onChange}></SearchForm>
+            <figure>
             <table>
                 <thead>
                     <tr>
@@ -73,6 +74,7 @@ export const EnvironmentalList = ({EnvList}: Props) => {
                 }
                 </tbody>
             </table>
+            </figure>
         </>
     )
 
