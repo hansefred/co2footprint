@@ -14,6 +14,16 @@
     margin: 2em 2em 2em 2em;
 }
 
+footer p{
+    margin: 2em 2em 2em 2em;
+}
+
+
+footer a{
+    margin: 2em 2em 2em 2em;
+}
+
+
 
 
 @media  screen and (max-width: 600px) {
@@ -33,6 +43,29 @@
     }
     .menu-bar-left-show{
         display: block;
+    }
+
+    table{
+        overflow-y:scroll;
+        height:20em;
+        display:block;
+    }
+
+    :root {
+        --line-height: 1;
+        --nav-element-spacing-horizontal: 0.2rem;
+    }
+    nav{
+        height: 6em;
+    }
+
+    footer p{
+        margin: 0.5em 0.5em 0.5em 0.5em;
+    }
+
+
+    footer a{
+        margin: 0.5em 0.5em 0.5em 0.5em;
     }
 
 }
