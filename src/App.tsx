@@ -1,29 +1,27 @@
-import React, { useState} from 'react';
+import React from 'react';
 import { faker } from '@faker-js/faker';
 import Environmental from "./Environmental";
 import EnvironmentalList from "./EnvironmentalList";
-import SearchForm from "./SearchForm";
+
 
 
 
 
 function App() {
 
+    const FakeDataCount = 500;
     let environmentalData: Environmental [] = loadFakeData();
 
 
     function loadFakeData() {
         let datas: Environmental [] = []
-
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < FakeDataCount; i++) {
             let data: Environmental = new Environmental();
             data.companyName = faker.company.name();
             data.countryName = faker.address.county();
             data.co2InTons = faker.datatype.number();
             datas.push(data);
         }
-
-
         return datas;
     }
 
