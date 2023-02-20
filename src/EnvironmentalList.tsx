@@ -1,25 +1,25 @@
 import React, {useState} from "react";
-import Environmental from "./Environmental";
-import {EnvironmentalComponent} from "./EnvironmentalComponent";
+import EnvironmentalData from "./Model/EnvironmentalData";
+import {EnvironmentalListItem} from "./EnvironmentalListItem";
 import SearchForm from "./SearchForm";
-import SearchFormData from "./SearchFormData";
+import SearchFormData, {SortOption} from "./Model/SearchFormData";
 
 
 type Props = {
-    EnvList:  Environmental []
+    EnvList:  EnvironmentalData []
 
 }
 
 export const EnvironmentalList = ({EnvList}: Props) => {
 
 
-    const [filteredList, setFilteredList] = useState<Environmental []>(SortList(EnvList))
+    const [filteredList, setFilteredList] = useState<EnvironmentalData []>(SortList(EnvList))
 
-    function SortList(newFilteredList: Environmental[], sortBy: string = "Country") {
+    function SortList(newFilteredList: EnvironmentalData[], sortBy: string = SortOption.Country) {
 
         switch (sortBy)
         {
-            case "Country":
+            case SortOption.Country:
                 newFilteredList.sort((a, b) => {
                     let aUp = a.countryName.toUpperCase();
                     let bUp = b.countryName.toUpperCase();
@@ -27,7 +27,7 @@ export const EnvironmentalList = ({EnvList}: Props) => {
                     return (aUp < bUp) ? -1 : (aUp > bUp) ? 1 : 0;
                 });
                 break;
-            case "Company":
+            case SortOption.Company:
                 newFilteredList.sort((a, b) => {
                     let aUp = a.companyName.toUpperCase();
                     let bUp = b.companyName.toUpperCase();
@@ -50,7 +50,7 @@ export const EnvironmentalList = ({EnvList}: Props) => {
 
             return sCompanyName.match(aCompanyName) && sCountryName.match(aCountryName)
         });
-        SortList(newFilteredList, arg.sort);
+        SortList(newFilteredList, arg.sort.valueOf());
         setFilteredList(newFilteredList);
     }
 
@@ -61,15 +61,15 @@ export const EnvironmentalList = ({EnvList}: Props) => {
             <table>
                 <thead>
                     <tr>
-                        <th>Country</th>
-                        <th>Company</th>
+                        <th>Land</th>
+                        <th>Firma</th>
                         <th>CO² Ausstoß in Tonnen</th>
                     </tr>
                 </thead>
                 <tbody>
                 {
                     filteredList.map(env => {
-                        return <EnvironmentalComponent Env={env} key={env.id}></EnvironmentalComponent>
+                        return <EnvironmentalListItem Env={env} key={env.id}></EnvironmentalListItem>
                     })
                 }
                 </tbody>
@@ -77,7 +77,6 @@ export const EnvironmentalList = ({EnvList}: Props) => {
             </figure>
         </>
     )
-
 
 }
 

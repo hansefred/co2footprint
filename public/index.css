@@ -23,6 +23,10 @@ footer a{
     margin: 2em 2em 2em 2em;
 }
 
+h1{
+    margin-left: 1em;
+    margin-right: 1em;
+}
 
 
 
@@ -35,7 +39,7 @@ footer a{
 
     }
     .menu-toggle{
-        display: block;
+        display: inline-block;
     }
 
     .menu-bar-right-show{
@@ -51,21 +55,11 @@ footer a{
         display:block;
     }
 
-    :root {
-        --line-height: 1;
-        --nav-element-spacing-horizontal: 0.2rem;
-    }
-    nav{
-        height: 6em;
+
+    footer{
+        display: flex;
+        flex-wrap: wrap;
     }
 
-    footer p{
-        margin: 0.5em 0.5em 0.5em 0.5em;
-    }
-
-
-    footer a{
-        margin: 0.5em 0.5em 0.5em 0.5em;
-    }
 
 }

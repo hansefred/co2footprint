@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
-import SearchFormData from "./SearchFormData";
+import SearchFormData from "./Model/SearchFormData";
+import {SortOption} from "./Model/SearchFormData";
 
 interface State
 {
     onSearchChange: (form:SearchFormData) => void;
 }
 
-
 const SearchForm: React.FC<State> = (props:State) => {
 
     const [countryName, setCountryName] = useState<string>("");
     const [companyName, setCompanyName] = useState<string>("");
-    const [sort, setSort] = useState<string>("");
-
-
+    const [sort, setSort] = useState<string>(SortOption.Company);
 
     function sanitizeString(input:string) {
         // Erlaubt nur Buchstaben, Zahlen und Unterstriche
@@ -23,7 +21,6 @@ const SearchForm: React.FC<State> = (props:State) => {
         return input.replace(regex, "");
     }
 
-    
     const onChangeCompany = (event: React.ChangeEvent<HTMLInputElement>): void => {
         let value = sanitizeString(event.target.value);
         setCompanyName(value);
@@ -36,25 +33,27 @@ const SearchForm: React.FC<State> = (props:State) => {
     };
 
     const onChangeSort = (event: React.ChangeEvent<HTMLSelectElement>): void => {
-        let value = sanitizeString(event.target.value);
+        let value : string = event.target.value;
         setSort(value);
-        props.onSearchChange({companyName: companyName, countryName: countryName, sort: value})
+        props.onSearchChange({companyName: companyName, countryName: countryName, sort:value})
     };
 
 
     return (
-
-            <div>
-                <label htmlFor="companyName">CompanyName</label>
-                <input id="companyName" type="text" value={companyName} onChange={onChangeCompany} />
-                <label htmlFor="countryName">CountryName</label>
-                <input id="countryName" type="text" value={countryName} onChange={onChangeCountry} />
+        <>
+                <input placeholder="Firma" id="companyName" type="text" value={companyName} onChange={onChangeCompany} />
+                <input placeholder="Land" id="countryName" type="text" value={countryName} onChange={onChangeCountry} />
                 <label htmlFor="sort">Sortieren nach:</label>
-                <select name="sort" value={sort} onChange={onChangeSort} >
-                    <option value="Country">CountryName</option>
-                    <option value="Company">Company</option>
+
+                <select onChange={onChangeSort}>
+                    {Object.values(SortOption).map((value) =>(
+
+                        <option key={value} value={value}>
+                            {value}
+                        </option>
+                    ))}
                 </select>
-            </div>
+        </>
         );
 
 }

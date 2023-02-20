@@ -18,9 +18,7 @@
       <button type="button" class="menu-toggle">&#x2630;</button>
     </li>
   </ul>
-  <ul>
-    <li><strong>CO²-Footprint</strong></li>
-  </ul>
+  <h1>CO²-Footprint</h1>
   <ul>
     <li><img alt="Icon" src="Earth.svg" style=" margin: 1em 4em 1em 1em;height: 3em;width: auto"></li>
   </ul>
@@ -29,27 +27,25 @@
 <main class="container">
   <div class="app-container">
     <div class="menu-bar-right">
-      <button>Home</button>
-      <button>About</button>
-      <button>Contact</button>
+      <button onclick="window.location='index.html'">Home</button>
+      <button onclick="window.location='Impress.html'">Impressum</button>
     </div>
+
+
     <div id="root" class="content"> </div>
 
     <div class="menu-bar-left">
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
+      <button onclick="window.location='index.html'">Home</button>
+      <button onclick="window.location='Impress.html'">Impressum</button>
     </div>
 
   </div>
 </main>
 <footer style="display: flex; justify-content: space-between;">
-  <p>&copy; 2023 My Website</p>
-  <a href="#">Home</a>
-  <a href="#">About</a>
-  <a href="#">Contact</a>
+  <p>&copy; CO²-Footprint</p>
+  <a href="Impress.html#Disclaimer">Haftungsausschluss</a>
+  <a href="Impress.html#Copyright">Urheberrecht</a>
+  <a href="Impress.html#Privacy">Datenschutz</a>
 </footer>
 
 <script src="Index.js"></script>

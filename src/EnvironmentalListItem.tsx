@@ -1,12 +1,12 @@
-import React,{FC} from 'react';
-import Environmental from "./Environmental";
+import React from 'react';
+import EnvironmentalData from "./Model/EnvironmentalData";
 
 
 type Props = {
-    Env:  Environmental
+    Env:  EnvironmentalData
 
 }
-export const EnvironmentalComponent = ({Env}: Props) => {
+export const EnvironmentalListItem = ({Env}: Props) => {
 
     return (
         <tr>
